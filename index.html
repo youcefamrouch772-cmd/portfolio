@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)file:///Users/youcef/Downloads/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youcef Amrouch — Photographer &amp; Filmmaker</title>
+<link href="./Youcef Amrouch — Photographer &amp; Filmmaker_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F4F0E8;
+    --cream-dark: #E8E3D8;
+    --cream-mid: #DDD8CC;
+    --khaki: #8A8A6E;
+    --khaki-dark: #5C5C45;
+    --green: #3D4A35;
+    --green-light: #6B7A5E;
+    --green-pale: #C8D4BE;
+    --ink: #1E1E16;
+    --ink-muted: #5A5A48;
+    --border: rgba(90,90,72,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 48px;
+  }
+  .nav-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    color: var(--green);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 48px 56px;
+    border-bottom: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+  }
+  .hero-left { max-width: 560px; }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--green-light);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--green-light);
+  }
+  .hero h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green);
+  }
+  .hero-bio {
+    max-width: 320px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    font-style: italic;
+    text-align: right;
+  }
+  .hero-bio strong {
+    font-weight: 400;
+    font-style: normal;
+    color: var(--green);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  /* FILTER */
+  .filter-bar {
+    padding: 28px 48px;
+    display: flex;
+    gap: 6px;
+    border-bottom: 0.5px solid var(--border);
+    align-items: center;
+  }
+  .filter-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--khaki);
+    text-transform: uppercase;
+    margin-right: 12px;
+  }
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    border: 0.5px solid var(--border);
+    color: var(--ink-muted);
+    background: transparent;
+    transition: all 0.2s;
+  }
+  .pill:hover { border-color: var(--green-light); color: var(--green); }
+  .pill.active {
+    background: var(--green);
+    color: var(--cream);
+    border-color: var(--green);
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: var(--border);
+    padding: 1.5px;
+  }
+  .project-card {
+    position: relative;
+    background: var(--cream-dark);
+    aspect-ratio: 3/2;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .project-card:nth-child(3n+2) { background: var(--cream-mid); }
+  .project-card:nth-child(3n+3) { background: #DDD4C2; }
+  .project-card .thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .project-card:hover .thumb { transform: scale(1.04); }
+  .project-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(30,30,22,0);
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+  .project-card:hover .card-overlay { background: rgba(30,30,22,0.55); }
+  .card-info {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.3s ease;
+  }
+  .project-card:hover .card-info { opacity: 1; transform: translateY(0); }
+  .card-title {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: 0.01em;
+  }
+  .card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green-pale);
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .type-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--green-pale);
+    display: inline-block;
+  }
+  .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,240,232,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .project-card:hover .play-btn { opacity: 1; }
+  .play-tri {
+    width: 0; height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 12px solid rgba(244,240,232,0.85);
+    margin-left: 3px;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: 80px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    border-top: 0.5px solid var(--border);
+  }
+  .about-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-light);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .about-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--green-light);
+  }
+  .about-text {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .about-text em { font-style: italic; color: var(--green); }
+  .about-details { padding-top: 8px; }
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .detail-row:first-child { border-top: 0.5px solid var(--border); }
+  .detail-key {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--khaki);
+  }
+  .detail-val {
+    font-size: 15px;
+    font-style: italic;
+    color: var(--ink-muted);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--green);
+    padding: 72px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .contact-left .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--green-pale);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .contact-left .contact-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--green-pale);
+  }
+  .contact-heading {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    color: var(--cream);
+    line-height: 1.15;
+  }
+  .contact-heading em { font-style: italic; color: var(--green-pale); }
+  .contact-right { text-align: right; }
+  .contact-email {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    text-decoration: none;
+    border-bottom: 0.5px solid rgba(200,212,190,0.4);
+    padding-bottom: 4px;
+    transition: border-color 0.2s, color 0.2s;
+    margin-bottom: 24px;
+  }
+  .contact-email:hover { color: var(--green-pale); border-color: var(--green-pale); }
+  .contact-socials {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+  .social-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(200,212,190,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--cream); }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: rgba(244,240,232,0.3);
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    .hero { padding: 48px 24px 40px; flex-direction: column; align-items: flex-start; }
+    .hero-bio { text-align: left; }
+    .filter-bar { padding: 20px 24px; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    #about { padding: 48px 24px; grid-template-columns: 1fr; gap: 40px; }
+    #contact { padding: 48px 24px; flex-direction: column; align-items: flex-start; }
+    .contact-right { text-align: left; }
+    .contact-socials { justify-content: flex-start; }
+    footer { padding: 16px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="file:///Users/youcef/Downloads/index.html#" class="nav-name">Youcef Amrouch</a>
+  <ul class="nav-links">
+    <li><a href="file:///Users/youcef/Downloads/index.html#work">Work</a></li>
+    <li><a href="file:///Users/youcef/Downloads/index.html#about">About</a></li>
+    <li><a href="file:///Users/youcef/Downloads/index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero fade-in visible">
+  <div class="hero-left">
+    <div class="hero-tag">Photographer &amp; Filmmaker</div>
+    <h1>Light,<br><em>motion</em><br>&amp; silence.</h1>
+  </div>
+  <p class="hero-bio">
+    <strong>Based in France</strong>
+    Capturing the in-between moments — the quiet before the frame, the grain in the light, the story that doesn't ask to be told.
+  </p>
+</section>
+
+<div class="filter-bar" id="work">
+  <span class="filter-label">Filter</span>
+  <div class="pill active" onclick="filterProjects(&#39;all&#39;, this)">All</div>
+  <div class="pill" onclick="filterProjects(&#39;photo&#39;, this)">Photo</div>
+  <div class="pill" onclick="filterProjects(&#39;video&#39;, this)">Video</div>
+</div>
+
+<div class="grid" id="project-grid">
+
+  <div class="project-card fade-in visible" data-type="photo">
+    <div class="project-placeholder" style="background:#DDD8CC;"></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Photography</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card fade-in visible" data-type="video">
+    <div class="project-placeholder" style="background:#CFC9B8;"></div>
+    <div class="play-btn"><div class="play-tri"></div></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Video</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card fade-in visible" data-type="photo">
+    <div class="project-placeholder" style="background:#C8C3B0;"></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Photography</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card fade-in visible" data-type="video">
+    <div class="project-placeholder" style="background:#D4CEC0;"></div>
+    <div class="play-btn"><div class="play-tri"></div></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Video</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card fade-in visible" data-type="photo">
+    <div class="project-placeholder" style="background:#E0DAC8;"></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Photography</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card fade-in visible" data-type="photo">
+    <div class="project-placeholder" style="background:#C0BAA8;"></div>
+    <div class="card-overlay">
+      <div class="card-info">
+        <div class="card-title">Project name</div>
+        <div class="card-type"><span class="type-dot"></span>Photography</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<section id="about">
+  <div class="fade-in visible">
+    <div class="about-label">About</div>
+    <p class="about-text">
+      Based in France, I work at the intersection of <em>documentary photography</em> and <em>cinematic video</em> — drawn to stillness, raw light, and the weight of a single frame.
+      <br><br>
+      Whether on a commercial set or wandering with a single roll of film, I believe every project deserves its own visual language.
+    </p>
+  </div>
+  <div class="about-details fade-in visible">
+    <div class="about-label">Details</div>
+    <div class="detail-row">
+      <span class="detail-key">Discipline</span>
+      <span class="detail-val">Photography &amp; Film</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Based in</span>
+      <span class="detail-val">France</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Available for</span>
+      <span class="detail-val">Commissions &amp; Collaborations</span>
+    </div>
+    <div class="detail-row">
+      <span class="detail-key">Languages</span>
+      <span class="detail-val">French, English, Arabic</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-left fade-in visible">
+    <div class="contact-label">Contact</div>
+    <h2 class="contact-heading">Let's make<br>something <em>real.</em></h2>
+  </div>
+  <div class="contact-right fade-in visible">
+    <a href="mailto:youcef.amrouch772@gmail.com" class="contact-email">youcef.amrouch772@gmail.com</a>
+    <div class="contact-socials">
+      <a href="file:///Users/youcef/Downloads/index.html#" class="social-link">Instagram</a>
+      <a href="file:///Users/youcef/Downloads/index.html#" class="social-link">Behance</a>
+      <a href="file:///Users/youcef/Downloads/index.html#" class="social-link">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Youcef Amrouch</span>
+  <span>Photographer &amp; Filmmaker</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function filterProjects(type, btn) {
+    document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (type === 'all' || card.dataset.type === type) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+
+
+</body></html>
